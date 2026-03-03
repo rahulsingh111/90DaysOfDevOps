@@ -1,3 +1,5 @@
+# Day 11: File Ownership and Permissions
+
 ### Task 1: Understanding Ownership (10 minutes)
 
 AFter running ls-l i found the details about the files (owner and group) in the home directory. The owner is the user who created the file, while the group is a collection of users that can have specific permissions on the file. The owner has full control over the file, while the group can have read, write, or execute permissions based on the settings.
