@@ -2,7 +2,6 @@
 ```bash
 #!/bin/bash
 
-# --- Task 1: Input and Validation ---
 if [ -z "$1" ]; then
     echo "Usage: $0 <path_to_log_file>"
     exit 1
@@ -15,26 +14,19 @@ if [ ! -f "$LOG_FILE" ]; then
     exit 1
 fi
 
-# Variables for the report
 REPORT_DATE=$(date +%Y-%m-%d)
 REPORT_FILE="log_report_$REPORT_DATE.txt"
 
-# --- Task 2: Error Count ---
-# Counting lines with ERROR or Failed (case-insensitive for robustness)
 ERROR_COUNT=$(grep -Ei "ERROR|Failed" "$LOG_FILE" | wc -l)
 echo "Total Errors/Failures found: $ERROR_COUNT"
 
-# --- Task 3: Critical Events ---
 echo "--- Critical Events ---"
-# -n prints line numbers
+
 CRITICAL_EVENTS=$(grep -n "CRITICAL" "$LOG_FILE")
 echo "$CRITICAL_EVENTS"
 
-# --- Task 4: Top 5 Error Messages ---
-# We use awk to strip the timestamp/date (assuming first 3 columns) to group similar messages
 TOP_ERRORS=$(grep "ERROR" "$LOG_FILE" | awk '{ $1=$2=$3=""; print $0 }' | sed 's/^[ \t]*//' | sort | uniq -c | sort -rn | head -5)
 
-# --- Task 5: Generate Summary Report ---
 {
     echo "==============================================="
     echo "LOG ANALYSIS REPORT - $REPORT_DATE"
@@ -56,7 +48,6 @@ TOP_ERRORS=$(grep "ERROR" "$LOG_FILE" | awk '{ $1=$2=$3=""; print $0 }' | sed 's
 
 echo "Report generated: $REPORT_FILE"
 
-# --- Task 6: Archive Processed Logs ---
 ARCHIVE_DIR="archive"
 mkdir -p "$ARCHIVE_DIR"
 mv "$LOG_FILE" "$ARCHIVE_DIR/"
