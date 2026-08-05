@@ -2,15 +2,21 @@
 ![alt text](image.png)
 
 ### Task 2: Dockerfile Instructions
-`
+
+```dockerfile
 FROM nginx:alpine
+
 WORKDIR /app
+
 RUN mkdir logs && \
     echo "Docker build completed successfully!" > logs/build-info.txt
+
 COPY index.html /usr/share/nginx/html/
+
 EXPOSE 80
+
 CMD ["nginx", "-g", "daemon off;"]
-`
+```
 ### Task 3: CMD vs ENTRYPOINT
 cmd is used to set default commands that can be overridden when running the container, while entrypoint is used to set a command that will always run, and any additional arguments will be passed to it.
 
