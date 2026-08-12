@@ -1,0 +1,1 @@
+today I learned that YAML is a data serialization language that is often used for configuration files. It is important to use spaces instead of tabs for indentation, as YAML is sensitive to whitespace. Additionally, I learned that strings do not need quotes unless they contain special characters, and that booleans can be represented as `true`/`false` without quotes.
