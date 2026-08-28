@@ -1,6 +1,7 @@
 my complete workflow looks like this:
 
-```name: pushing to dockerhub
+```
+name: pushing to dockerhub
 #checking feat
 on:
     push:
@@ -24,7 +25,9 @@ jobs:
               with:
                 context: .
                 push: true
-                tags: ${{ vars.DOCKERHUB_USERNAME }}/lms:latest
+                tags: | 
+                    ${{ vars.DOCKERHUB_USERNAME }}/lms:latest
+                    ${{ vars.DOCKERHUB_USERNAME }}/lms:sha-${{ github.sha }}
 ```
 
 ### Task 3: Push to Docker Hub
