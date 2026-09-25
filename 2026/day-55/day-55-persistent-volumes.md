@@ -1,0 +1,8 @@
+Containers needs persistent storage for data that must survive Pod restarts. there are some important data that needs to be retained even if the Pod is deleted or recreated. Kubernetes provides Persistent Volumes (PV) and Persistent Volume Claims (PVC) to manage this persistent storage.
+
+PVs is persistent volume and PVCs is persistent volume claim. PV is a piece of storage in the cluster that has been provisioned by an administrator or dynamically provisioned using Storage Classes. PVC is a request for storage by a user. It is similar to a Pod. Pods consume node resources and PVCs consume PV resources.
+
+Static provisioning is when an administrator creates a PV and makes it available for use. Dynamic provisioning is when a user creates a PVC and Kubernetes automatically provisions a PV for that claim using Storage Classes. Dynamic provisioning is useful when you want to automate the process of creating PVs and avoid manual intervention. It allows developers to request storage without needing to know the details of the underlying storage infrastructure.
+
+Access modes are of three types: ReadWriteOnce (RWO) allows a volume to be mounted as read-write by a single node, ReadOnlyMany (ROX) allows a volume to be mounted as read-only by many nodes, and ReadWriteMany (RWX) allows a volume to be mounted as read-write by many nodes. The access mode determines how the volume can be accessed by Pods.
+Reclaim policy is of two types: Retain and Delete. Retain policy allows the PV to be retained even after the PVC is deleted, while Delete policy allows the PV to be deleted when the PVC is deleted. The reclaim policy determines what happens to the PV when the PVC is deleted.
