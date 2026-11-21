@@ -7,8 +7,7 @@
 - Understand configuration management and Ansible's architecture.
 - Use a control node to manage Linux EC2 instances over SSH.
 - Organize managed nodes into inventory groups.
-- Run ad-hoc commands and verify their results.
-
+- Run ad-hoc commands and verify their results
 ## 1. What is Ansible?
 
 Configuration management describes and applies the desired state of machines: which packages are installed, which services run, which users and files exist, and how those settings are maintained. It makes server setup repeatable, reduces manual drift and mistakes, and helps rebuild or update fleets consistently.
